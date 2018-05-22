@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.2">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2018-05-22T16:17:20-05:00</updated><id>http://0.0.0.0:4000/</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://0.0.0.0:4000/jekyll/update/2018/05/22/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2018-05-22T16:06:12-05:00</published><updated>2018-05-22T16:06:12-05:00</updated><id>http://0.0.0.0:4000/jekyll/update/2018/05/22/welcome-to-jekyll</id><content type="html" xml:base="http://0.0.0.0:4000/jekyll/update/2018/05/22/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Differential of softmax with loss func of cnn</title><link href="http://0.0.0.0:4000/2017/09/26/cnn-softmax-with-loss.html" rel="alternate" type="text/html" title="Differential of softmax with loss func of cnn" /><published>2017-09-26T00:38:14-05:00</published><updated>2017-09-26T00:38:14-05:00</updated><id>http://0.0.0.0:4000/2017/09/26/cnn-softmax-with-loss</id><content type="html" xml:base="http://0.0.0.0:4000/2017/09/26/cnn-softmax-with-loss.html">&lt;hr /&gt;
+&lt;h1 id=&quot;出力層について&quot;&gt;出力層について&lt;/h1&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  x_i = \sum w_ji y_i + b_j \\
+  p_j = \frac{e^{x_i}}{\sum_{k=1}^{n} e^{x_k}}
+\end{align*}&lt;/script&gt;
+
+&lt;p&gt;(&lt;script type=&quot;math/tex&quot;&gt;x_i \rightarrow \infty&lt;/script&gt;の場合もありうるので注意)
+であり、&lt;/p&gt;
+
+&lt;p&gt;d_iを1,正しいカテゴリ 2,その他とすると、Cは&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  C = -\sum_{i=1}^{n}d_i log p_i (サンプル数1の場合) \\
+  C = -\sum_{s=1}^{m} \sum_{i=1}^{n} d_i^s log p_i^s
+(サンプル数mの場合)
+\end{align*}&lt;/script&gt;
+
+&lt;p&gt;よって、&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  \frac{\partial C}{\partial w_ji} =
+  \frac{\partial C}{\partial p_j}
+  \frac{\partial p_j}{\partial x_j} 
+  \frac{\partial x_j}{\partial w_ji}
+\end{align*}&lt;/script&gt;
+
+&lt;p&gt;また、&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  \frac{\partial C}{\partial b_j} =
+  \frac{\partial C}{\partial p_j}
+  \frac{\partial p_j}{\partial x_j} 
+  \frac{\partial x_j}{\partial b_j}
+\end{align*}&lt;/script&gt;
+
+&lt;p&gt;サンプル数1の場合&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  \frac{\partial C}{\partial p_j} =
+  \frac{d_j}{p_j}
+\end{align*}&lt;/script&gt;
+
+&lt;p&gt;サンプル数mの場合&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  \frac{\partial C}{\partial p_j} =
+  \frac{d_j^s}{p_j^s}
+\end{align*}&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\frac{\partial p_j}{\partial w_j}&lt;/script&gt;を求めるために、
+各要素を微分で求める。&lt;/p&gt;
+
+&lt;p&gt;(i) &lt;script type=&quot;math/tex&quot;&gt;\frac{\partial p_i}{\partial x_i}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;(i=jの時)&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+  \frac{\partial p_i}{\partial x_i} &amp;=
+
+  \left( \frac{e^{x_i}}{\sum_{k=1}^{n} e^{x_k}} \right)' \\
+
+  &amp; =\frac{e^{x_i}}{\sum_{k=1}^{n} e^{x_k}} -
+  \frac{e^{2x_i}}{(\sum_{k=1}^{n} e^{x_k})^2} \\
+
+  &amp; = \frac{e^{x_i}}{\sum_{k=1}^{n} e^{x_k}} 
+  \left( 1 - \frac{e^{x_i}}{(\sum_{k=1}^{n} e^{x_k})} \right) \\
+
+  &amp; = p_i(1-p_i) (sigmoidの微分と同じ形)
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;(&lt;script type=&quot;math/tex&quot;&gt;i \ne j&lt;/script&gt;の時)&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+  \frac{\partial p_i}{\partial x_j} &amp;=
+
+  \frac{-e^{x_i}e^{x_j}}{(\sum_{k=1}^{n} e^{x_k})^2}  \\
+
+  &amp; = -p_i p_j
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;(ii)&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial x_j}{\partial w_ji} = y_i&lt;/script&gt;
+
+&lt;p&gt;(iii)&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial x_j}{\partial b_j} = 1&lt;/script&gt;
+
+&lt;p&gt;以上より、&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+  \frac{\partial C}{\partial w_ji} &amp;=
+  \frac{\partial C}{\partial p_j}
+  \frac{\partial p_j}{\partial x_j} 
+  \frac{\partial x_j}{\partial w_ji} \\
+
+  &amp;= -\sum_{s=1}^{m} \left(
+      \frac{d_j^s}{p_j^s}
+      \cdot p_i^s(1-p_i^s)
+      \cdot y_i^s
+      \right)
+
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+  \frac{\partial C}{\partial b_j} &amp;=
+  \frac{\partial C}{\partial p_j}
+  \frac{\partial p_j}{\partial x_j} 
+  \frac{\partial x_j}{\partial b_j} \\
+
+  &amp;= -\sum_{s=1}^{m} \left(
+      \frac{d_j^s}{p_j^s}
+      \cdot p_i^s(1-p_i^s)
+      \cdot 1
+      \right)
+
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;w_ji: j番目の出力ユニットのi番目の入力&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+\varDelta w_{ji}^t = 
+  -\epsilon
+  \frac{\partial C}{\partial w_{ji}^t}
+  + \alpha \varDelta w_{ji}^{t-1}
+  - \epsilon \lambda w_{ji}^t
+
+\end{align*}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+\varDelta b_{j}^t = 
+  -\epsilon
+  \frac{\partial C}{\partial b_j}
+  + \varDelta b_j^{t-1}
+  - \epsilon \lambda b_i^t
+
+\end{align*}&lt;/script&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;pooling-layerについて&quot;&gt;pooling layerについて&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;学習しない&lt;/li&gt;
+  &lt;li&gt;入力チャネルごとに独立して処理をする&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;誤差情報を入力側の畳み込み層に逆伝播する必要がある。&lt;/p&gt;
+
+&lt;p&gt;入出力&lt;/p&gt;
+
+&lt;p&gt;k: チャネル
+P_{ij}: 小領域&lt;/p&gt;
+
+&lt;p&gt;平均プーリング
+&lt;script type=&quot;math/tex&quot;&gt;\begin{align*}
+  y_{ijk} = \frac{1}{|P_{ij}|} 
+  \sum_{(p,q) \in P_{ij}} y_{pqk}
+\end{align*}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;maxプーリング
+&lt;script type=&quot;math/tex&quot;&gt;\begin{align*}
+  y_{ijk} = max_{(p,q) \in P_{ij}} y_{pqk}
+\end{align*}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Lpプーリング
+&lt;script type=&quot;math/tex&quot;&gt;\begin{align*}
+  y_{ijk} = 
+  \left(
+  \frac{1}{|P_{ij}|} 
+  \sum_{(p,q) \in P_{ij}} y_{pqk}^p
+  \right)
+  ^ \frac{1}{p}
+\end{align*}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;(a)出力層からの逆伝播&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;y_{ijk}^s&lt;/script&gt; : P layerの出力&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;y_{abk}^s&lt;/script&gt; : P layerの入力&lt;/p&gt;
+
+&lt;p&gt;k :チャネル&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  \frac{\partial C}{\partial y_{abk}} =
+  \sum_{s=1}^{m} \sum_{p=1}^{n}
+  \frac{\partial C}{\partial x_p^s}
+  \frac{\partial x_p^s}{\partial y_{ijk}^s} 
+  \frac{\partial y_{ijk}^s}{\partial y_{abk}^s}
+  \end{align*}&lt;/script&gt;
+
+&lt;p&gt;上式の偏微分について
+  &lt;script type=&quot;math/tex&quot;&gt;\begin{align*}
+  \frac{\partial x_{pql}}{\partial y_{ijl}} = w_{ijl}
+  \end{align*}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;ここで、&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\begin{align*}
+  \sum_{s=1}^{m} \sum_{p=1}^{n}
+  \frac{\partial C}{\partial x_p^s}
+  \end{align*}&lt;/script&gt;
+  の部分は出力層での計算結果を使用する。&lt;/p&gt;
+
+&lt;p&gt;(b)convolution層からの逆伝播&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;x_{ijl}&lt;/script&gt;: Clayerのチャネルlの位置p,qの入力の荷重和バイアス&lt;/p&gt;
+
+&lt;p&gt;N: Clayerのチャネル数&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;P_{ij}&lt;/script&gt;: P layerの出力が対応するClayerのユニット&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  \frac{\partial C}{\partial y_abk} =
+  \sum_{s=1}^{m}
+  \left(
+  \sum_{p=1}^{n} \sum_{p,q \in P_ij}
+  \frac{\partial C}{\partial x_{ijl}^s}
+  \frac{\partial x_{ijl}^s}{\partial y_{ijk}^s} 
+  \right)
+  \frac{\partial y_{ijk}^s}{\partial y_{abk}^s}
+\end{align*}&lt;/script&gt;
+
+&lt;p&gt;上式の偏微分について
+&lt;script type=&quot;math/tex&quot;&gt;\begin{align*}
+  \frac{\partial x_{pql}}{\partial y_{ijl}} =
+\end{align*}&lt;/script&gt;
+C layerのフィルタに対応する位置の値
+(アルゴリズムをあとで考える)&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\frac{\partial x_{ijl}^s}{\partial y_{ijk}^s}&lt;/script&gt;については
+次の逆伝播のClayerで計算すべきなので、この層では計算しない&lt;/p&gt;
+
+&lt;p&gt;平均プーリング微分
+&lt;script type=&quot;math/tex&quot;&gt;\begin{align*}
+  \frac{\partial y_{ijk}}{\partial y_{abk}} =
+  \frac{1}{|P_{ij}|} 
+\end{align*}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;maxプーリング微分
+&lt;script type=&quot;math/tex&quot;&gt;\begin{eqnarray}
+\frac{\partial y_{ijk}}{\partial y_{abk}} =
+  \begin{cases}
+    1 :(P_{ij}小領域最大値の位置) \\
+    0 :その他
+  \end{cases}
+\end{eqnarray}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Lpプーリング微分
+&lt;script type=&quot;math/tex&quot;&gt;\begin{align*}
+  \frac{\partial y_{ijk}}{\partial y_{abk}} =
+  \frac{1}{P}
+  \left(
+  \frac{1}{|P_{ij}|} 
+  \sum_{(p,q) \in P_{ij}} y_{pqk}^p
+  \right)
+  ^{\frac{1}{p} - 1}
+\end{align*}&lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;convolution-layerについて&quot;&gt;Convolution layerについて&lt;/h1&gt;
+
+&lt;p&gt;入出力&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  x_{ijl} =
+  \sum_{k=1}^{N}
+  \left[
+  \sum_{p=1}^w \sum_{q=1}^w
+  y_{i+p, j+q, k} h_{pqk}
+  \right]
+  + b_{ijl}
+\end{align*}&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;b_{ijl}&lt;/script&gt;はユニット毎に変更する&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;l&lt;/script&gt;: c layerのチャネル&lt;/p&gt;
+
+&lt;p&gt;ij: c layerのユニットの位置&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;y_{ijl} = \frac{1}{1+e^x_{ijl}}&lt;/script&gt;
+
+&lt;p&gt;プーリング層では畳み込み層のチャネルと1対1対応だが、
+&lt;strong&gt;フィルタが入力チャネル一つに一つ&lt;/strong&gt;なので&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;Q_{pql}&lt;/script&gt;: フィルタの位置pqが荷重として働いている位置&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  \frac{\partial C}{\partial h_{pqk}} =
+  \sum_{r,s \in Q_{pq}}
+  \frac{\partial C}{\partial x_{rsl}}
+  \frac{\partial x_{rsl}}{\partial h_{ijl}^s}
+\end{align*}&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\frac{\partial C}{\partial h_{pqk}}&lt;/script&gt;を求めるために、
+各要素を微分で求める。&lt;/p&gt;
+
+&lt;p&gt;(i) &lt;script type=&quot;math/tex&quot;&gt;\frac{\partial C}{\partial x_{rsl}}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;y_{pql}^s&lt;/script&gt;: p layerの出力
+&lt;script type=&quot;math/tex&quot;&gt;y_{rsl}^s&lt;/script&gt;: 保留&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;P_{ij}&lt;/script&gt;: 現在計算しているユニットからの入力を受けるp layerのユニット&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  \frac{\partial C}{\partial x_{rsl}} =
+  \sum_{s=1}^{m}
+  \sum_{r,s \in Q_{pq}}
+  \frac{\partial C}{\partial y_{pql}^s}
+  \frac{\partial y_{pql}^s}{\partial y_{rsl}^s}
+  \frac{\partial y_{rsl}^s}{\partial x_{rsl}^s}
+\end{align*}&lt;/script&gt;
+
+&lt;p&gt;ここで、&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  \sum_{s=1}^{m}
+  \sum_{r,s \in Q_{pq}}
+  \frac{\partial C}{\partial y_{pql}^s}
+\end{align*}&lt;/script&gt;
+
+&lt;p&gt;は、pooling layerでの計算結果を使う。&lt;/p&gt;
+
+&lt;p&gt;(ii) &lt;script type=&quot;math/tex&quot;&gt;\frac{\partial y_{rsl}}{\partial x_{rsl}}&lt;/script&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+  \frac{\partial y_{rsl}}{\partial x_{rsl}} &amp;=
+  \left(
+  \frac{1}{1 + e^{-x_{rsl}}}
+  \right)' \\
+  &amp;= y_{rsl} (1 - y_{rsl})
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;(ii)&lt;script type=&quot;math/tex&quot;&gt;\frac{\partial y_{rsl}}{\partial x_{rsl}} =&lt;/script&gt;対応する入力&lt;script type=&quot;math/tex&quot;&gt;y_{ijk}&lt;/script&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+  \frac{\partial C}{\partial b_{ijk}} =
+  \sum_{s=1}^{m}
+  \sum_{r,s \in Q_{pq}}
+  \frac{\partial C}{\partial y_{pql}^s}
+  \frac{\partial y_{pql}^s}{\partial y_{ijl}^s}
+  \frac{\partial y_{ijl}^s}{\partial x_{ijl}^s}
+  \cdot
+  \frac{\partial x_{ijl}^s}{\partial b_{ij}}
+\end{align*}&lt;/script&gt;
+
+&lt;p&gt;ここで、
+&lt;script type=&quot;math/tex&quot;&gt;\frac{\partial x_{ijl}^s}{\partial b_{ij}} = 1&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">出力層について</summary></entry><entry><title type="html">Coprime</title><link href="http://0.0.0.0:4000/math/2017/09/19/Coprime.html" rel="alternate" type="text/html" title="Coprime" /><published>2017-09-19T22:30:00-05:00</published><updated>2017-09-19T22:30:00-05:00</updated><id>http://0.0.0.0:4000/math/2017/09/19/Coprime</id><content type="html" xml:base="http://0.0.0.0:4000/math/2017/09/19/Coprime.html">&lt;h1 id=&quot;互いに素&quot;&gt;互いに素&lt;/h1&gt;
+&lt;p&gt;def&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+\forall a_1,...,a_n \in \Bbb N, が互いに素とは \\
+  gcd(a_1,...,a_n) = 1
+\end{align*}&lt;/script&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Thm&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+\forall n \in \Bbb N, st \\
+  gcd(n, n+1) = 1
+\end{align*}&lt;/script&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;proof1
+&lt;script type=&quot;math/tex&quot;&gt;gcd(n, n+1) \ne 1&lt;/script&gt;とすると、nとn+1に対する約数d(divisor)が存在し、ある整数a,bを用いて&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;n = ad, n+1 = bd&lt;/script&gt;
+
+&lt;p&gt;と書ける。
+これより、
+&lt;script type=&quot;math/tex&quot;&gt;d(b-a) = 1&lt;/script&gt;
+&lt;strong&gt;dが1の約数である&lt;/strong&gt;となるため、矛盾。&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;proof2&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;gcd(n, n+1) \ne 1&lt;/script&gt;とすると、nとn+1に対する約数&lt;script type=&quot;math/tex&quot;&gt;p \ge 2&lt;/script&gt;が存在する。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;dの倍数同士の差もdの倍数なので&lt;/strong&gt;
+n+1 - n = 1 もpの倍数となる。
+1がpの倍数であるならばpは1なので&lt;script type=&quot;math/tex&quot;&gt;d \ge 2&lt;/script&gt;に矛盾。&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;proof3&lt;/p&gt;
+
+&lt;p&gt;nが1の時、n=1, n+1=2は条件を満たす。
+&lt;script type=&quot;math/tex&quot;&gt;n \ge 2&lt;/script&gt;の時、nの素因数pが存在する。
+nより大きく、次にpで割り切るのはn+p
+素数は2以上なので&lt;script type=&quot;math/tex&quot;&gt;p \ge 2&lt;/script&gt;
+どのようなpに対しても
+pはn+1の約数ではない。&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;proof1を改良したmyproof(もっとも自然というかなんでみんなこれでしないの？)&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;gcd(n, n+1) = x&lt;/script&gt;とおくと&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;n = xa, n+1 = xb (\exists a, b \in \Bbb N)&lt;/script&gt;
+よって
+&lt;script type=&quot;math/tex&quot;&gt;m(b-a) = n+1 - n = 1&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;m&amp;gt;0より m = 1&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Cor&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+\forall n \in \Bbb N, st \\
+  gcd(n-1, n) = 1
+\end{align*}&lt;/script&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Thm2&lt;/p&gt;
+
+&lt;p&gt;mとnが互いに素 &lt;script type=&quot;math/tex&quot;&gt;\Leftrightarrow&lt;/script&gt; x,yの不定方程式&lt;script type=&quot;math/tex&quot;&gt;mx + ny = 1&lt;/script&gt;が整数解をもつ。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;(1)整数解&lt;script type=&quot;math/tex&quot;&gt;\Rightarrow&lt;/script&gt;互いに素&lt;/p&gt;
+
+&lt;p&gt;mとnが互いに素でないとすると、mとnは共通素因数dを持ち、&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;m = ad, n = bd (a,b \in Z)&lt;/script&gt;
+とかける。&lt;/p&gt;
+
+&lt;p&gt;すると、
+&lt;script type=&quot;math/tex&quot;&gt;mx + ny = d(ax + by)&lt;/script&gt;
+となり、整数解を持つと、dが1の約数となり矛盾。よって整数解を持たない。&lt;/p&gt;
+
+&lt;p&gt;(2)互いに素 &lt;script type=&quot;math/tex&quot;&gt;\Rightarrow&lt;/script&gt; 整数解&lt;/p&gt;
+
+&lt;p&gt;整数x,yを用いて、&lt;script type=&quot;math/tex&quot;&gt;mx + ny&lt;/script&gt;と表せる数全体の集合を&lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt;とする。&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt;に属する自然数のうち、最小のものをdとおく。&lt;/p&gt;
+
+&lt;p&gt;整数&lt;script type=&quot;math/tex&quot;&gt;x_0, y_0&lt;/script&gt;を用いて、&lt;script type=&quot;math/tex&quot;&gt;d = mx_0 + ny_0&lt;/script&gt;と書ける。
+&lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt;の任意の元&lt;script type=&quot;math/tex&quot;&gt;mx + ny&lt;/script&gt;をdで割った時の商をq、余りをrとすると。&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;mx + ny = dq + r (0 \le r \lt d)&lt;/script&gt;
+
+&lt;p&gt;よって、&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;r = mx + ny - dq = m(x - x_0q) + n(y - y_0q)&lt;/script&gt;
+
+&lt;p&gt;したがって&lt;script type=&quot;math/tex&quot;&gt;r \in M&lt;/script&gt;となる。もし、&lt;script type=&quot;math/tex&quot;&gt;r \gt 0&lt;/script&gt;なら、dの最小性に反するので、r=0&lt;/p&gt;
+
+&lt;p&gt;すると、&lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt;の元は全てdの倍数となる。&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;m,n \in M&lt;/script&gt;であるから、dはmとnの約数であるが、m,nは互いに素なので、d=1となる。
+したがって、&lt;script type=&quot;math/tex&quot;&gt;1 \in m&lt;/script&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;参考文献&quot;&gt;参考文献&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.beret.co.jp/books/detail/487&quot;&gt;blog:思考力を鍛える数学&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;proof1&lt;/li&gt;
+  &lt;li&gt;Thm2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.beret.co.jp/books/detail/487&quot;&gt;blog:高校数学の美しい物語:互いに素の意味と関連する三つの定理&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;proof2&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">互いに素 def</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://0.0.0.0:4000/jekyll/update/2017/09/06/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2017-09-06T11:02:57-05:00</published><updated>2017-09-06T11:02:57-05:00</updated><id>http://0.0.0.0:4000/jekyll/update/2017/09/06/welcome-to-jekyll</id><content type="html" xml:base="http://0.0.0.0:4000/jekyll/update/2017/09/06/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Euclidean Algorithm</title><link href="http://0.0.0.0:4000/math/2017/02/12/Euclidean-Algorithm.html" rel="alternate" type="text/html" title="Euclidean Algorithm" /><published>2017-02-12T19:30:20-06:00</published><updated>2017-02-12T19:30:20-06:00</updated><id>http://0.0.0.0:4000/math/2017/02/12/Euclidean-Algorithm</id><content type="html" xml:base="http://0.0.0.0:4000/math/2017/02/12/Euclidean-Algorithm.html">&lt;h1 id=&quot;最大公約数greatest-common-divisor&quot;&gt;最大公約数(greatest common divisor)&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Def(最大公約数)&lt;/p&gt;
+
+  &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;a_1,...,a_n \in \Bbb Z&lt;/script&gt;の最大公約数とは&lt;/p&gt;
+
+  &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;a_1,...,a_n&lt;/script&gt;を&lt;/p&gt;
+
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+ a_j = \varepsilon_j \prod_{p\ prime} p^ {e_p(j)} \quad (e_p(j) \ge 0, \varepsilon_j = \pm 1)
+\end{align*}&lt;/script&gt;
+
+  &lt;p&gt;と素因数分解したとき&lt;/p&gt;
+
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+ gcd(a_1,...,a_n) = \prod_{p\ prime} p^ {\min(e_p(1),...,e_p(n))}
+\end{align*}&lt;/script&gt;
+
+  &lt;p&gt;である。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;ユークリッドの互除法euclidean-algorithm&quot;&gt;ユークリッドの互除法(Euclidean Algorithm)&lt;/h1&gt;
+
+&lt;p&gt;Thm(Euclidean Algorithm)&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+ \forall a, b \in \Bbb N, 
+ a=bq+rの時,
+\end{align*}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;gcd(a,b) = gcd(b,r)&lt;/script&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;proof1&lt;/p&gt;
+
+&lt;p&gt;方針: gcd(a,b)とgcd(b,r)の関係性を考える。公約数が最大公約数以下であることを用いて等式に持っていく&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;gcd(a,b)= g, \\ gcd(b,r) = h&lt;/script&gt;
+
+&lt;p&gt;とする。&lt;/p&gt;
+
+&lt;p&gt;(公約数の定義を思い出すと倍数でかけることを思いつく) &lt;br /&gt;
+a,bはgの倍数であるので、&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;a = a'g, b = b'g (\exists a' b' \in N) \tag{1}&lt;/script&gt;
+と表すことができる&lt;/p&gt;
+
+&lt;p&gt;(どうにかgとhを絡められないかを考える。&lt;br /&gt;
+&lt;script type=&quot;math/tex&quot;&gt;gcd(a,b)&lt;/script&gt;がrで割れて,&lt;script type=&quot;math/tex&quot;&gt;gcd(b,r)&lt;/script&gt;がaで割れるという関係性を考えようとする)&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a = qb + r \tag{2}&lt;/script&gt;
+
+&lt;p&gt;より&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;r = a - qb&lt;/script&gt;
+
+&lt;p&gt;これに(1)を代入して&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+  r &amp;= a'g - qb'g \\
+  &amp; = (a' - qb')g
+
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;これよりrはgを約数として持つため、gはbとrの公約数である。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;公約数は最大公約数以下なので&lt;script type=&quot;math/tex&quot;&gt;g \le h&lt;/script&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;また、b,rはhの倍数なので、
+&lt;script type=&quot;math/tex&quot;&gt;b = c'h, r = r'h (\exists c' h' \in N) \tag{3}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;(2)に(3)を代入して、&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+  a &amp;= qb + r   \\
+  &amp;= qc'h + r'h \\
+  &amp; = (qc' + r)h
+
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;よってaはhを約数として持つため、hはaとbの公約数である。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;公約数は最大公約数以下なので&lt;script type=&quot;math/tex&quot;&gt;g \ge h&lt;/script&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;g \le h&lt;/script&gt; かつ &lt;script type=&quot;math/tex&quot;&gt;g \ge h&lt;/script&gt;なので g=h &lt;script type=&quot;math/tex&quot;&gt;\Box&lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;proof2
+(1)まで同様
+&lt;script type=&quot;math/tex&quot;&gt;a = ga' , b = gb' \tag{1}&lt;/script&gt;と表せる。&lt;/p&gt;
+
+&lt;p&gt;(1)の時、
+&lt;script type=&quot;math/tex&quot;&gt;gcd(a', b') = 1　\tag{2}&lt;/script&gt;となることを示す。
+(互いに素)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align*}
+
+\end{align*}&lt;/script&gt;
+
+&lt;h1 id=&quot;参考文献&quot;&gt;参考文献&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://ja.wikipedia.org/wiki/%E3%83%A6%E3%83%BC%E3%82%AF%E3%83%AA%E3%83%83%E3%83%89%E3%81%AE%E4%BA%92%E9%99%A4%E6%B3%95&quot;&gt;Wikipedia:ユークリッドの互除法&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;define greatest common divisor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.beret.co.jp/books/detail/487&quot;&gt;書籍:ガロア理論の頂を踏む&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;proof1&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">最大公約数(greatest common divisor)</summary></entry></feed>
